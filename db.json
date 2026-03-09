@@ -1,0 +1,33 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "01654852136"
+    },
+    {
+      "id": "2",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "phone": "01354865478"
+    },
+    {
+      "id": "1dae",
+      "firstName": "Kabir",
+      "lastName": "Sing",
+      "email": "k.s@gmail.com",
+      "phone": "01896542516"
+    },
+    {
+      "id": "13be",
+      "firstName": "Arif",
+      "lastName": "Hossain",
+      "email": "ar.h150@gmail.com",
+      "phone": "01854565987"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

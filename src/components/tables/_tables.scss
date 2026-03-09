@@ -1,0 +1,74 @@
+.contact_tableContainer {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  .table_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #dbebfa;
+
+    .search_box {
+    }
+  }
+
+  .filter_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
+
+    .contact-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      th,
+      td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      th {
+        background: #f8fafc;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:hover {
+        background-color: #f8fafc;
+      }
+    }
+  }
+
+  .table_textBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.error {
+      color: var(--color-danger);
+    }
+
+    &.loading {
+      color: var(--color-text-light);
+    }
+  }
+}

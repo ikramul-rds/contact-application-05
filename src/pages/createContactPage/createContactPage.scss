@@ -1,0 +1,14 @@
+.create_contactPpage {
+  width: 100%;
+  margin-top: 2rem;
+
+  .form_wrapper {
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background: var(--color-surface);
+  }
+}

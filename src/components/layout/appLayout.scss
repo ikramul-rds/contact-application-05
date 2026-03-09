@@ -1,0 +1,14 @@
+.appLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .main_app {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
