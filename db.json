@@ -20,13 +20,6 @@
       "lastName": "Sing",
       "email": "k.s@gmail.com",
       "phone": "01896542516"
-    },
-    {
-      "id": "13be",
-      "firstName": "Arif",
-      "lastName": "Hossain",
-      "email": "ar.h150@gmail.com",
-      "phone": "01854565987"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

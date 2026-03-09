@@ -21,7 +21,10 @@ const ContactTable = ({ onView, onEdit, onDelete }) => {
       <FilterSection />
 
       {loading ? (
-        <div className="table_textBox">Loading contacts...</div>
+        <div className="table_textBox">
+          Loading contacts... <br />
+          Please wait as it is a free API and may take some time to start up.
+        </div>
       ) : error ? (
         <div className="table_textBox">Error: {error}</div>
       ) : (
