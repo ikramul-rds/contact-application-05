@@ -9,7 +9,8 @@ import {
 
 const ContactContext = createContext();
 
-const API_URL = "http://localhost:3000/contacts";
+// const API_URL = "http://localhost:3000/contacts";
+const API_URL = "http://localhost:8888/.netlify/functions/api/contacts"; // Netlify Functions endpoint
 
 const initialState = {
   contacts: [],
