@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useContacts } from "../../context/ContactContext";
 
 const TableHeader = () => {
-  const { searchQuery, setSearchQuery } = useContacts();
   const navigate = useNavigate();
+  const { searchQuery, setSearchQuery } = useContacts();
 
   return (
     <div className="table_header">

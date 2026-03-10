@@ -1,6 +1,11 @@
 import { useState } from "react";
 import "./_tables.scss";
 
+// assets
+import { FiEdit } from "react-icons/fi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { BiShow } from "react-icons/bi";
+
 // context
 import { useContacts } from "../../context/ContactContext";
 
@@ -11,11 +16,6 @@ import Modal from "../modals/Modal";
 import ViewContactModal from "../modals/ViewContactModal";
 import DeleteConfirmModal from "../modals/DeleteConfirmModal";
 import ContactForm from "../forms/ContactForm";
-
-// assets
-import { FiEdit } from "react-icons/fi";
-import { AiOutlineDelete } from "react-icons/ai";
-import { BiShow } from "react-icons/bi";
 
 const ContactTable = () => {
   const { filteredContacts, loading, error, updateContact, deleteContact } =

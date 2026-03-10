@@ -8,13 +8,13 @@ import { useContacts } from "../../context/ContactContext";
 import ContactForm from "../../components/forms/ContactForm";
 
 const CreateContactPage = () => {
-  const { addContact } = useContacts();
   const navigate = useNavigate();
+  const { addContact } = useContacts();
 
   const handleAddContact = async (contactData) => {
     const success = await addContact(contactData);
     if (success) {
-      navigate("/"); // Redirect to Home Page after successful creation
+      navigate("/");
     }
   };
 

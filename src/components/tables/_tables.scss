@@ -60,9 +60,11 @@
 
   .table_textBox {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 0.5rem;
 
     &.error {
       color: var(--color-danger);
