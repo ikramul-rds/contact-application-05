@@ -65,12 +65,13 @@ const ContactTable = () => {
       <FilterSection />
 
       {loading ? (
-        <div className="table_textBox">
+        <div className="table_textBox loading">
+          <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
           Loading contacts... <br />
           Please wait as it is a free API and may take some time to start up.
         </div>
       ) : error ? (
-        <div className="table_textBox">Error: {error}</div>
+        <div className="table_textBox error">Error: {error}</div>
       ) : (
         <div className="table-container">
           <table className="contact-table">
