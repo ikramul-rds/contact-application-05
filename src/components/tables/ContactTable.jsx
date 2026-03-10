@@ -1,10 +1,5 @@
-import React from "react";
+import { useState } from "react";
 import "./_tables.scss";
-
-// assets
-import { FiEdit } from "react-icons/fi";
-import { AiOutlineDelete } from "react-icons/ai";
-import { BiShow } from "react-icons/bi";
 
 // context
 import { useContacts } from "../../context/ContactContext";
@@ -12,9 +7,58 @@ import { useContacts } from "../../context/ContactContext";
 // components
 import TableHeader from "./TableHeader";
 import FilterSection from "./FilterSection";
+import Modal from "../modals/Modal";
+import ViewContactModal from "../modals/ViewContactModal";
+import DeleteConfirmModal from "../modals/DeleteConfirmModal";
+import ContactForm from "../forms/ContactForm";
 
-const ContactTable = ({ onView, onEdit, onDelete }) => {
-  const { filteredContacts, loading, error } = useContacts();
+// assets
+import { FiEdit } from "react-icons/fi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { BiShow } from "react-icons/bi";
+
+const ContactTable = () => {
+  const { filteredContacts, loading, error, updateContact, deleteContact } =
+    useContacts();
+
+  // Modals state
+  const [isViewOpen, setIsViewOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [selectedContact, setSelectedContact] = useState(null);
+
+  const handleEditContact = async (contactData) => {
+    const success = await updateContact(contactData);
+    if (success) {
+      setIsEditOpen(false);
+      setSelectedContact(null);
+    }
+  };
+
+  const handleDeleteContact = async () => {
+    if (!selectedContact) return;
+    const success = await deleteContact(selectedContact.id);
+    if (success) {
+      setIsDeleteOpen(false);
+      setSelectedContact(null);
+    }
+  };
+
+  const openViewModal = (contact) => {
+    setSelectedContact(contact);
+    setIsViewOpen(true);
+  };
+
+  const openEditModal = (contact) => {
+    setSelectedContact(contact);
+    setIsEditOpen(true);
+  };
+
+  const openDeleteModal = (contact) => {
+    setSelectedContact(contact);
+    setIsDeleteOpen(true);
+  };
+
   return (
     <div className="contact_tableContainer">
       <TableHeader />
@@ -50,19 +94,19 @@ const ContactTable = ({ onView, onEdit, onDelete }) => {
                     <td className="actions-cell flex gap-2">
                       <button
                         className="btn btn--secondary btn--sm"
-                        onClick={() => onView(contact)}
+                        onClick={() => openViewModal(contact)}
                       >
                         <BiShow size={18} />
                       </button>
                       <button
                         className="btn btn--primary btn--sm"
-                        onClick={() => onEdit(contact)}
+                        onClick={() => openEditModal(contact)}
                       >
                         <FiEdit size={18} />
                       </button>
                       <button
                         className="btn btn--danger btn--sm"
-                        onClick={() => onDelete(contact)}
+                        onClick={() => openDeleteModal(contact)}
                       >
                         <AiOutlineDelete size={18} />
                       </button>
@@ -84,6 +128,40 @@ const ContactTable = ({ onView, onEdit, onDelete }) => {
           </table>
         </div>
       )}
+
+      <ViewContactModal
+        isOpen={isViewOpen}
+        onClose={() => setIsViewOpen(false)}
+        contact={selectedContact}
+        onEdit={(c) => {
+          setIsViewOpen(false);
+          openEditModal(c);
+        }}
+        onDelete={(c) => {
+          setIsViewOpen(false);
+          openDeleteModal(c);
+        }}
+      />
+
+      <Modal isOpen={isEditOpen} onClose={() => setIsEditOpen(false)}>
+        <ContactForm
+          key={selectedContact?.id || "edit"}
+          initialData={selectedContact}
+          onSubmit={handleEditContact}
+          onCancel={() => setIsEditOpen(false)}
+        />
+      </Modal>
+
+      <DeleteConfirmModal
+        isOpen={isDeleteOpen}
+        onClose={() => setIsDeleteOpen(false)}
+        onConfirm={handleDeleteContact}
+        contactName={
+          selectedContact
+            ? `${selectedContact.firstName} ${selectedContact.lastName}`
+            : ""
+        }
+      />
     </div>
   );
 };
